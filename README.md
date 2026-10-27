@@ -41,7 +41,7 @@ NestJS REST API  (http://localhost:3000)
 TypeORM Repository
    |
    v
-MySQL · inventario_tecnologico
+MySQL · inventario_tecnologico2
 ```
 
 ---
@@ -69,7 +69,7 @@ cd certamenweb2
 En MySQL Workbench (o en la consola de MySQL) ejecutar:
 
 ```sql
-CREATE DATABASE inventario_tecnologico;
+CREATE DATABASE inventario_tecnologico2;
 ```
 
 > La tabla `equipos` **no se crea manualmente**: TypeORM la genera automáticamente a partir de la entidad `Equipo` al iniciar el backend (`synchronize: true`).
@@ -93,7 +93,7 @@ Variables necesarias (`backend/.env.example`):
 | `DB_PORT` | Puerto de MySQL | `3307` (por defecto MySQL usa `3306`) |
 | `DB_USER` | Usuario de MySQL | `root` |
 | `DB_PASSWORD` | Contraseña del usuario | `tu_contraseña_aqui` |
-| `DB_NAME` | Nombre de la base de datos | `inventario_tecnologico` |
+| `DB_NAME` | Nombre de la base de datos | `inventario_tecnologico2` |
 
 > El archivo `.env` contiene credenciales reales y **no se publica** en el repositorio (está en `.gitignore`).
 
@@ -278,8 +278,6 @@ Se reinició el backend y se verificó que los equipos seguían almacenados en M
 - Desarrollé el proyecto paso a paso en VS Code, ejecutando y comprobando cada etapa antes de avanzar y realizando un commit por cada avance.
 - Identifiqué que mi servidor MySQL funciona en el puerto **3307** y adapté la configuración (`.env` y `.env.example`).
 - Ante los errores de compilación con NestJS 12, corregí los imports agregando la extensión `.js` y comprendí el motivo (proyecto configurado como módulos ES).
-- Solicité el código sin comentarios para estudiarlo y comprenderlo por mi cuenta.
 - Ejecuté y verifiqué manualmente las 10 pruebas de la API, las 9 pruebas del frontend y la prueba de persistencia.
 - Verifiqué que el archivo `.env` con credenciales no se publicara en GitHub y corregí el `.gitignore` para excluir archivos de compilación (`*.tsbuildinfo`).
 
-Soy responsable del código entregado y puedo explicar su funcionamiento.
