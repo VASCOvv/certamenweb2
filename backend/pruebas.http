@@ -1,0 +1,85 @@
+### 1. Listar todos los equipos
+GET http://localhost:3000/equipos
+
+### 2. Crear un equipo válido
+POST http://localhost:3000/equipos
+Content-Type: application/json
+
+{
+  "codigoInventario": "INV-001",
+  "nombre": "Notebook Lenovo ThinkPad",
+  "tipo": "Notebook",
+  "marca": "Lenovo",
+  "modelo": "ThinkPad E14",
+  "ubicacion": "Laboratorio 1",
+  "estado": "Disponible",
+  "fechaAdquisicion": "2024-03-15",
+  "observaciones": "Equipo nuevo"
+}
+
+### 3. Obtener el equipo con id 1
+GET http://localhost:3000/equipos/1
+
+### 4. Obtener un equipo que NO existe (debe dar 404)
+GET http://localhost:3000/equipos/9999
+
+### 5. Actualizar solo el estado y la ubicación
+PATCH http://localhost:3000/equipos/1
+Content-Type: application/json
+
+{
+  "estado": "En uso",
+  "ubicacion": "Sala de profesores"
+}
+
+### 6. Datos inválidos (debe dar 400 con los mensajes de error)
+POST http://localhost:3000/equipos
+Content-Type: application/json
+
+{
+  "codigoInventario": "A",
+  "nombre": "PC",
+  "tipo": "",
+  "marca": "HP",
+  "modelo": "ProDesk",
+  "ubicacion": "Lab 2",
+  "estado": "Perdido",
+  "fechaAdquisicion": "2024-02-30"
+}
+
+### 7. Campo no declarado en el DTO (debe dar 400)
+POST http://localhost:3000/equipos
+Content-Type: application/json
+
+{
+  "codigoInventario": "INV-099",
+  "nombre": "Monitor Samsung",
+  "tipo": "Monitor",
+  "marca": "Samsung",
+  "modelo": "S24",
+  "ubicacion": "Lab 3",
+  "estado": "Disponible",
+  "fechaAdquisicion": "2023-08-01",
+  "precio": 150000
+}
+
+### 8. Código duplicado (debe dar 409)
+POST http://localhost:3000/equipos
+Content-Type: application/json
+
+{
+  "codigoInventario": "INV-001",
+  "nombre": "Otro equipo",
+  "tipo": "PC",
+  "marca": "Dell",
+  "modelo": "Optiplex",
+  "ubicacion": "Lab 1",
+  "estado": "Disponible",
+  "fechaAdquisicion": "2022-01-10"
+}
+
+### 9. ID que no es número (debe dar 400)
+GET http://localhost:3000/equipos/abc
+
+### 10. Eliminar el equipo con id 1
+DELETE http://localhost:3000/equipos/1
